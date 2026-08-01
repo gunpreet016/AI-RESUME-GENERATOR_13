@@ -1,0 +1,11 @@
+streamlit
+langchain
+langchain-community
+langchain-google-genai
+langchain-groq
+google-generativeai
+tavily-python
+Pillow
+numpy
+pytesseract
+PyMuPDF
