@@ -156,61 +156,31 @@ if st.button('generate resume'):
     code=response['messages'][-1].content[-1]['text']
     #st.markdown(code)
     st.html(code , width="stretch" , unsafe_allow_javascript=True)
+      
     st.divider()
     st.subheader("💼 Apply Jobs")
 
-    OPTIONS = [
-            "DELHI", "NOIDA", "GURGAON/GURUGRAM",
-            "KANPUR", "LUCKNOW", "BANGALORE", "PUNE"
-        ]
+    OPTIONS = ["DELHI","NOIDA","GURUGRAM","KANPUR","LUCKNOW","BANGLORE","PUNE"]
+    LOCATION = st.sidebar.multiselect('SELECT LOCATION: ', options = OPTIONS)
+    JOB_PROFILE = ["PYTHON DEVELOPER", "GEN AI", "FULL-STACK DEVELOPMENT"," DATA ANALYST"]
+    PROFILE = st.sidebar.multiselct("SELECT JOB ROLE", options = JOB_PROFILE)
 
-    LOCATION = st.multiselect(
-            "SELECT LOCATION",
-            options=OPTIONS
-        )
-    JOB_PROFILE = [
-            "PYTHON DEVELOPER",
-            "GEN AI",
-            "FULL-STACK DEVELOPER",
-            "DATA ANALYST"
-        ]
+    job_prompt= f"""Based on {PROFILE} jobs in {LOCATION},
+    Search the latest jobs using Tavily.
+    Return Top 10 jobs in beautiful HTML format.
+    For each job include:
+    - Job Title
+    - Company Name
+    - Location
+    - Salary (if available)
+    - Short Description
+    - Apply Link"""
 
-    PROFILE = st.multiselect(
-            "SELECT JOB ROLE",
-            options=JOB_PROFILE
-        )
+    st.divider()
+    response = agent.invoke({'messages':[{'role':'user','content':job_prompt}]})
+    
+    job_code = response['messages'][-1].content[-1]['text]
+    st.html(job_code, width = "stretch", unsafe_allow_javascript=True)
 
-        job_prompt = f"""
-        Based on {PROFILE} jobs in {LOCATION},
-
-        Search the latest jobs using Tavily.
-
-        Return Top 10 jobs in beautiful HTML format.
-
-        For each job include:
-        - Job Title
-        - Company Name
-        - Location
-        - Salary (if available)
-        - Short Description
-        - Apply Link
-        """
-
-        if st.button("🚀 Search Jobs"):
-
-            response = agent.invoke({
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": job_prompt
-                    }
-                ]
-            })
-
-            job_code = response["messages"][-1].content[-1]["text"]
-
-            st.html(
-                job_code,
-                width="stretch",
-                unsafe_allow_javascript=True
-            )
+    
+L
