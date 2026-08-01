@@ -183,4 +183,4 @@ if st.button('generate resume'):
     st.html(job_code, width = "stretch", unsafe_allow_javascript=True)
 
     
-L
+
