@@ -156,27 +156,26 @@ if st.button('generate resume'):
     code=response['messages'][-1].content[-1]['text']
     #st.markdown(code)
     st.html(code , width="stretch" , unsafe_allow_javascript=True)
-            st.divider()
-        st.subheader("💼 Apply Jobs")
+    st.divider()
+    st.subheader("💼 Apply Jobs")
 
-        OPTIONS = [
+    OPTIONS = [
             "DELHI", "NOIDA", "GURGAON/GURUGRAM",
             "KANPUR", "LUCKNOW", "BANGALORE", "PUNE"
         ]
 
-        LOCATION = st.multiselect(
+    LOCATION = st.multiselect(
             "SELECT LOCATION",
             options=OPTIONS
         )
-
-        JOB_PROFILE = [
+    JOB_PROFILE = [
             "PYTHON DEVELOPER",
             "GEN AI",
             "FULL-STACK DEVELOPER",
             "DATA ANALYST"
         ]
 
-        PROFILE = st.multiselect(
+     PROFILE = st.multiselect(
             "SELECT JOB ROLE",
             options=JOB_PROFILE
         )
