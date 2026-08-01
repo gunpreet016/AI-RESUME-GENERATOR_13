@@ -158,7 +158,6 @@ if st.button('generate resume'):
     st.html(code , width="stretch" , unsafe_allow_javascript=True)
       
     st.divider()
-    st.subheader("💼 Apply Jobs")
 
     OPTIONS = ["DELHI","NOIDA","GURUGRAM","KANPUR","LUCKNOW","BANGLORE","PUNE"]
     LOCATION = st.sidebar.multiselect('SELECT LOCATION: ', options = OPTIONS)
