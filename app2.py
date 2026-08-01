@@ -175,7 +175,7 @@ if st.button('generate resume'):
             "DATA ANALYST"
         ]
 
-     PROFILE = st.multiselect(
+    PROFILE = st.multiselect(
             "SELECT JOB ROLE",
             options=JOB_PROFILE
         )
