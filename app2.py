@@ -163,7 +163,7 @@ if st.button('generate resume'):
     OPTIONS = ["DELHI","NOIDA","GURUGRAM","KANPUR","LUCKNOW","BANGLORE","PUNE"]
     LOCATION = st.sidebar.multiselect('SELECT LOCATION: ', options = OPTIONS)
     JOB_PROFILE = ["PYTHON DEVELOPER", "GEN AI", "FULL-STACK DEVELOPMENT"," DATA ANALYST"]
-    PROFILE = st.sidebar.multiselct("SELECT JOB ROLE", options = JOB_PROFILE)
+    PROFILE = st.sidebar.multiselect("SELECT JOB ROLE", options = JOB_PROFILE)
 
     job_prompt= f"""Based on {PROFILE} jobs in {LOCATION},
     Search the latest jobs using Tavily.
